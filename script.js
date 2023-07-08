@@ -59,6 +59,14 @@ function clearChar() {
     }
 };
 
+function resetAll() {
+    display.textContent = '0';
+    firstNum = '';
+    lastInput = '';
+    operator = '';
+    displayItem = '';
+};
+
 const operators = {
     add: (a, b) => a + b,
     subtract: (a, b) => a - b,
@@ -112,6 +120,7 @@ function runOperation() {
 function setupEventListeners() {
 
     clear.addEventListener('click', clearChar);
+    clearAll.addEventListener('click', resetAll);
 
     num1.addEventListener('click', (e) => storeAndDisplay(e.target.value));
     num2.addEventListener('click', (e) => storeAndDisplay(e.target.value));
