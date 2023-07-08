@@ -30,17 +30,12 @@ const equal = document.getElementById('equal');
 function clearChar() {
     const displayArr = display.textContent.split(' ');
   
-    console.log(displayArr);
-    console.log(displayArr.length);
-  
     if (displayArr.length === 1) {
         const firstIndex = displayArr[0].split('');
         firstIndex.splice(-1,1);
         const string = firstIndex.join('');
         displayItem = '';
         addToDisplay(string);
-    
-        console.log(string);
         return;   
     }
   
@@ -53,8 +48,6 @@ function clearChar() {
         lastInput = string;
         displayItem = '';
         addToDisplay(newDisplay);
-    
-        console.log(lastInput);
         return;   
     }
 };
@@ -72,7 +65,7 @@ const operators = {
     subtract: (a, b) => a - b,
     multiply: (a, b) => a * b,
     divide: (a, b) => a / b,
-}
+};
 
 function operate(num1, op, num2) {
     num1 = +num1;
@@ -90,7 +83,7 @@ function operate(num1, op, num2) {
             };
             return quotient = operators.divide(num1, num2);
     }
-}
+};
 
 function addToDisplay(item) {
     displayItem += item;
@@ -165,6 +158,6 @@ function setupEventListeners() {
     equal.addEventListener('click', () => {
         runOperation()
     });
-}
+};
 
 setupEventListeners();
