@@ -45,6 +45,9 @@ function operate(num1, op, num2) {
         case 'x':
             return product = operators.multiply(num1, num2);
         case '÷':
+            if (num2 === 0) {
+                return 'You made Bobert go crazy.'
+            };
             return quotient = operators.divide(num1, num2);
     }
 }
