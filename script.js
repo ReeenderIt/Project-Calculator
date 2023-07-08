@@ -27,6 +27,38 @@ const divide = document.getElementById('divide');
 const equal = document.getElementById('equal');
 
 
+function clearChar() {
+    const displayArr = display.textContent.split(' ');
+  
+    console.log(displayArr);
+    console.log(displayArr.length);
+  
+    if (displayArr.length === 1) {
+        const firstIndex = displayArr[0].split('');
+        firstIndex.splice(-1,1);
+        const string = firstIndex.join('');
+        displayItem = '';
+        addToDisplay(string);
+    
+        console.log(string);
+        return;   
+    }
+  
+    if (displayArr.length === 3) {
+        const lastIndex = displayArr[2].split('');
+        lastIndex.splice(-1,1);
+        const string = lastIndex.join('');
+        displayArr.splice(2, 1, string);
+        let newDisplay = displayArr.join(' ');
+        lastInput = string;
+        displayItem = '';
+        addToDisplay(newDisplay);
+    
+        console.log(lastInput);
+        return;   
+    }
+};
+
 const operators = {
     add: (a, b) => a + b,
     subtract: (a, b) => a - b,
@@ -78,6 +110,8 @@ function runOperation() {
 };
 
 function setupEventListeners() {
+
+    clear.addEventListener('click', clearChar);
 
     num1.addEventListener('click', (e) => storeAndDisplay(e.target.value));
     num2.addEventListener('click', (e) => storeAndDisplay(e.target.value));
