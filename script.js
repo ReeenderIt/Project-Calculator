@@ -117,16 +117,16 @@ function setupEventListeners() {
     clear.addEventListener('click', clearChar);
     clearAll.addEventListener('click', resetAll);
 
-    num1.addEventListener('click', (e) => displayNum(e.target.value));
-    num2.addEventListener('click', (e) => displayNum(e.target.value));
-    num3.addEventListener('click', (e) => displayNum(e.target.value));
-    num4.addEventListener('click', (e) => displayNum(e.target.value));
-    num5.addEventListener('click', (e) => displayNum(e.target.value));
-    num6.addEventListener('click', (e) => displayNum(e.target.value));
-    num7.addEventListener('click', (e) => displayNum(e.target.value));
-    num8.addEventListener('click', (e) => displayNum(e.target.value));
-    num9.addEventListener('click', (e) => displayNum(e.target.value));
-    num0.addEventListener('click', (e) => displayNum(e.target.value));
+    num1.addEventListener('click', getValue);
+    num2.addEventListener('click', getValue);
+    num3.addEventListener('click', getValue);
+    num4.addEventListener('click', getValue);
+    num5.addEventListener('click', getValue);
+    num6.addEventListener('click', getValue);
+    num7.addEventListener('click', getValue);
+    num8.addEventListener('click', getValue);
+    num9.addEventListener('click', getValue);
+    num0.addEventListener('click', getValue);
     decimal.addEventListener('click', getValue);
 
     plus.addEventListener('click', (e) => {
