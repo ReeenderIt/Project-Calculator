@@ -29,21 +29,16 @@ const equal = document.getElementById('equal');
 
 
 function clearChar() {
-    const displayArr = display.textContent.split(' ');
-  
-    if (displayArr.length === 1) {
-        const firstIndex = displayArr[0].split('');
+    const displayArr = display.textContent.split('');
+    displayArr.splice(-1,1);
+    const newInput = displayArr.join('');
+    displayItem = '';
+    displayNum(newInput);
 
-        if (firstIndex.length === 1) {
-            resetAll();
-            return;
-        }
-        
-        firstIndex.splice(-1,1);
-        const string = firstIndex.join('');
-        secondNum = '';
-        storeAndDisplay(string);
-        return;   
+    if (newInput.length === 0) {
+        resetAll();
+        display.textContent = '0';
+        return;
     }
 };
 
