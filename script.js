@@ -32,6 +32,12 @@ function clearChar() {
   
     if (displayArr.length === 1) {
         const firstIndex = displayArr[0].split('');
+
+        if (firstIndex.length === 1) {
+            resetAll();
+            return;
+        }
+        
         firstIndex.splice(-1,1);
         const string = firstIndex.join('');
         displayItem = '';
