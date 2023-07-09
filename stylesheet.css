@@ -40,6 +40,7 @@ main {
 .buttons {
     display: grid;
     grid-template-columns: auto auto;
+    gap: 3px;
 }
 
 
@@ -51,6 +52,7 @@ main {
     grid-row: 1 / 2;
     display: grid;
     grid-template-columns: max-content auto auto;
+    gap: 3px;
 }
 
 .clear {
@@ -74,6 +76,7 @@ main {
 .numbers {
     display: grid;
     grid-template-columns: auto auto auto;
+    gap: 3px;
 }
 
 .number0 {
@@ -100,6 +103,7 @@ main {
     grid-template-rows: repeat(5, max-content);
     justify-content: space-between;
     width: 100%;
+    gap: 3px;
 }
 
 /* .operators button { */
