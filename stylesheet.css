@@ -43,7 +43,7 @@ main {
     min-width: max-content;
     margin: 9rem auto;
     padding: 1.5em;
-    border: solid 2px black;
+    border: solid 2px #000000;
     border-radius: 7px;
     background-color: #e1e1e1;
 }
@@ -53,13 +53,13 @@ main {
     margin: .1em 0 .2em;
     padding: 0 .1em;
     justify-content: end;
-    border: solid 6px black;
-    background-color: rgb(132, 163, 157);
+    border: solid 6px #000000;
+    background-color: #84a39d;
 }
 
 .buttons {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: repeat(2, auto);
     gap: 3px;
 }
 
@@ -75,7 +75,7 @@ main {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
     display: grid;
-    grid-template-columns: max-content auto auto;
+    grid-template-columns: max-content repeat(2, auto);
     gap: 3px;
 }
 
@@ -104,7 +104,7 @@ main {
 
 .numbers {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: repeat(3, auto);
     gap: 3px;
 }
 
