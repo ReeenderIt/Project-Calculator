@@ -1,7 +1,7 @@
 
 let firstNum = '';
-let lastInput = '';
 let operator = '';
+let secondNum = '';
 let displayItem = '';
 
 const display = document.getElementById('display');
@@ -41,20 +41,8 @@ function clearChar() {
         
         firstIndex.splice(-1,1);
         const string = firstIndex.join('');
-        displayItem = '';
-        addToDisplay(string);
-        return;   
-    }
-  
-    if (displayArr.length === 3) {
-        const lastIndex = displayArr[2].split('');
-        lastIndex.splice(-1,1);
-        const string = lastIndex.join('');
-        displayArr.splice(2, 1, string);
-        let newDisplay = displayArr.join(' ');
-        lastInput = string;
-        displayItem = '';
-        addToDisplay(newDisplay);
+        secondNum = '';
+        storeAndDisplay(string);
         return;   
     }
 };
@@ -62,9 +50,9 @@ function clearChar() {
 function resetAll() {
     display.textContent = '0';
     firstNum = '';
-    lastInput = '';
     operator = '';
     displayItem = '';
+    secondNum = '';
 };
 
 const operators = {
@@ -92,76 +80,62 @@ function operate(num1, op, num2) {
     }
 };
 
-function addToDisplay(item) {
-    displayItem += item;
+function displayNum(num) {
+    displayItem += num;
     display.textContent = displayItem;
 };
 
-function storeLastInput(value) {
-    lastInput += value;
-};
-
-function storeAndDisplay(num) {
-    storeLastInput(num);
-    addToDisplay(num);
-};
-
 function runOperation() {
+    secondNum = display.textContent;
     if ((num1 !== '' || num1 == '0') 
         && operator !== ''
-        && (lastInput !== '' || lastInput == '0')) {
-        const result = operate(firstNum, operator, lastInput);
+        && (secondNum !== '' || secondNum == '0')) {
+        const result = operate(firstNum, operator, secondNum);
         displayItem = '';
-        lastInput = '';
-        addToDisplay(result);
+        secondNum = '';
+        displayNum(result);
     };
 };
+
+function setAndReset(item) {
+    firstNum = display.textContent;
+    operator = item;
+    displayItem = '';
+    secondNum = '';
+}
 
 function setupEventListeners() {
 
     clear.addEventListener('click', clearChar);
     clearAll.addEventListener('click', resetAll);
 
-    num1.addEventListener('click', (e) => storeAndDisplay(e.target.value));
-    num2.addEventListener('click', (e) => storeAndDisplay(e.target.value));
-    num3.addEventListener('click', (e) => storeAndDisplay(e.target.value));
-    num4.addEventListener('click', (e) => storeAndDisplay(e.target.value));
-    num5.addEventListener('click', (e) => storeAndDisplay(e.target.value));
-    num6.addEventListener('click', (e) => storeAndDisplay(e.target.value));
-    num7.addEventListener('click', (e) => storeAndDisplay(e.target.value));
-    num8.addEventListener('click', (e) => storeAndDisplay(e.target.value));
-    num9.addEventListener('click', (e) => storeAndDisplay(e.target.value));
-    num0.addEventListener('click', (e) => storeAndDisplay(e.target.value));
-    decimal.addEventListener('click', (e) => storeAndDisplay(e.target.value));
+    num1.addEventListener('click', (e) => displayNum(e.target.value));
+    num2.addEventListener('click', (e) => displayNum(e.target.value));
+    num3.addEventListener('click', (e) => displayNum(e.target.value));
+    num4.addEventListener('click', (e) => displayNum(e.target.value));
+    num5.addEventListener('click', (e) => displayNum(e.target.value));
+    num6.addEventListener('click', (e) => displayNum(e.target.value));
+    num7.addEventListener('click', (e) => displayNum(e.target.value));
+    num8.addEventListener('click', (e) => displayNum(e.target.value));
+    num9.addEventListener('click', (e) => displayNum(e.target.value));
+    num0.addEventListener('click', (e) => displayNum(e.target.value));
+    decimal.addEventListener('click', (e) => displayNum(e.target.value));
 
     plus.addEventListener('click', (e) => {
         runOperation();
-        firstNum = display.textContent;
-        operator = e.target.value;
-        addToDisplay(` ${e.target.value} `);
-        lastInput = '';
+        setAndReset(e.target.value);
     });
     minus.addEventListener('click', (e) => {
         runOperation();
-        firstNum = display.textContent;
-        operator = e.target.value;
-        addToDisplay(e.target.value);
-        lastInput = '';
+        setAndReset(e.target.value);
     });
     multiply.addEventListener('click', (e) => {
         runOperation();
-        firstNum = display.textContent;
-        operator = e.target.value;
-        addToDisplay(e.target.value);
-        lastInput = '';
-
+        setAndReset(e.target.value);
     });
     divide.addEventListener('click', (e) => {
         runOperation();
-        firstNum = display.textContent;
-        operator = e.target.value;
-        addToDisplay(e.target.value);
-        lastInput = '';
+        setAndReset(e.target.value);
     });
     equal.addEventListener('click', () => {
         runOperation()
