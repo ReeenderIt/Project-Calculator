@@ -36,7 +36,6 @@ function clearChar() {
     displayNum(newInput);
 
     if (newInput.length === 0) {
-        resetAll();
         display.textContent = '0';
         return;
     }
