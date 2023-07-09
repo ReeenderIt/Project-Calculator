@@ -84,6 +84,11 @@ main {
     background-color: #aa2d66;
 }
 
+.clear-btns button:active {
+    color: #000000;
+    background-color: #ff86ba;
+}
+
 .clear {
     grid-column: 1 / 2;
 }
@@ -111,6 +116,11 @@ main {
 .numbers button {
     color: white;
     background-color: #2f2f2f;
+}
+
+.numbers button:active {
+    color: #000000;
+    background-color: #f5f5f5;
 }
 
 .number0 {
@@ -143,4 +153,10 @@ main {
 .operators button {
     color: #000000;
     background-color: #f5f5f5;
+}
+
+.operators button[value]:focus {
+    color: #f5f5f5;
+    background-color: #000000;
+    border-style: none;
 }
