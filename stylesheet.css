@@ -36,6 +36,7 @@ button {
 
 main {
     max-width: max-content;;
+    min-width: max-content;
     margin: 9rem auto;
     border: solid 3px black;
     padding: .3em;
