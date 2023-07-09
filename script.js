@@ -19,6 +19,7 @@ const num7 = document.getElementById('num7');
 const num8 = document.getElementById('num8');
 const num9 = document.getElementById('num9');
 const num0 = document.getElementById('num0');
+const decimal = document.getElementById('decimal');
 
 const plus = document.getElementById('plus');
 const minus = document.getElementById('minus');
@@ -131,6 +132,7 @@ function setupEventListeners() {
     num8.addEventListener('click', (e) => storeAndDisplay(e.target.value));
     num9.addEventListener('click', (e) => storeAndDisplay(e.target.value));
     num0.addEventListener('click', (e) => storeAndDisplay(e.target.value));
+    decimal.addEventListener('click', (e) => storeAndDisplay(e.target.value));
 
     plus.addEventListener('click', (e) => {
         runOperation();
