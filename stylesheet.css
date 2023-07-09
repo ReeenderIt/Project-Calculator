@@ -17,9 +17,22 @@ button {
     padding: 0;
 }
 
+
+
+/***************** Typography ********************/
+
 .display {
     font-size: 60px;
 }
+
+.buttons * {
+    font-size: 25px;
+    font-weight: 500;
+}
+
+
+
+/***************** Layout ********************/
 
 main {
     max-width: max-content;;
