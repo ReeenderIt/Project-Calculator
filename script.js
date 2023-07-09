@@ -75,8 +75,15 @@ function operate(num1, op, num2) {
 };
 
 function displayNum(num) {
-    displayItem += num;
     if (displayItem.length < 13) {
+        displayItem += num;
+        console.log(displayItem);
+        
+        if (displayItem.includes('.')) {
+            console.log('true')
+            decimal.removeEventListener('click', getValue)
+        };
+
         display.textContent = displayItem;
     };
 };
@@ -90,6 +97,7 @@ function runOperation() {
         displayItem = '';
         secondNum = '';
         displayNum(result);
+        decimal.addEventListener('click', getValue);
     };
 };
 
@@ -99,6 +107,10 @@ function setAndReset(item) {
     displayItem = '';
     secondNum = '';
 }
+
+function getValue(event) {
+    displayNum(event.target.value);
+};
 
 function setupEventListeners() {
 
@@ -115,7 +127,7 @@ function setupEventListeners() {
     num8.addEventListener('click', (e) => displayNum(e.target.value));
     num9.addEventListener('click', (e) => displayNum(e.target.value));
     num0.addEventListener('click', (e) => displayNum(e.target.value));
-    decimal.addEventListener('click', (e) => displayNum(e.target.value));
+    decimal.addEventListener('click', getValue);
 
     plus.addEventListener('click', (e) => {
         runOperation();
