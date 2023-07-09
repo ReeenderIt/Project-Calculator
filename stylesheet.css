@@ -2,7 +2,6 @@
     margin: none;
     padding: none;
     box-sizing: border-box;
-    border-radius: 10px;
 }
 
 ul, ol {
@@ -38,8 +37,10 @@ main {
     max-width: max-content;;
     min-width: max-content;
     margin: 9rem auto;
-    border: solid 3px black;
-    padding: .3em;
+    padding: 1em;
+    border: solid 4px black;
+    border-radius: 7px;
+    background-color: rgb(195, 195, 195);
 }
 
 .display {
