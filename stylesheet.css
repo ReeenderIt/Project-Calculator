@@ -160,7 +160,6 @@ main {
 .operators button[value]:focus {
     color: #f5f5f5;
     background-color: #000000;
-    border-style: none;
 }
 
 .operators button[id="equal"]:active {
