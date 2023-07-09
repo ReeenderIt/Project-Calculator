@@ -19,6 +19,8 @@ button {
     width: 100px;
     height: 85px;
     padding: 0;
+    border-style: none;
+    border: solid 1px #acacac;
 }
 
 
