@@ -82,7 +82,9 @@ function operate(num1, op, num2) {
 
 function displayNum(num) {
     displayItem += num;
-    display.textContent = displayItem;
+    if (displayItem.split('').length < 13) {
+        display.textContent = displayItem;
+    };
 };
 
 function runOperation() {
