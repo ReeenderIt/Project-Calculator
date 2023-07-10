@@ -77,10 +77,8 @@ function operate(num1, op, num2) {
 function displayNum(num) {
     if (displayItem.length < 13) {
         displayItem += num;
-        console.log(displayItem);
         
         if (displayItem.includes('.')) {
-            console.log('true')
             decimal.removeEventListener('click', getValue)
         };
 
