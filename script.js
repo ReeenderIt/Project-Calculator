@@ -96,7 +96,6 @@ function runOperation() {
         const result = operate(firstNum, operator, secondNum);
         displayItem = '';
         secondNum = '';
-        // firstNum = '';
         displayNum(result);
         decimal.addEventListener('click', getValue);
     };
