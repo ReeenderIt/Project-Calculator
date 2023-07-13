@@ -64,9 +64,9 @@ function operate(num1, op, num2) {
             return sum = operators.add(num1, num2);
         case '-':
             return difference = operators.subtract(num1, num2);
-        case 'x':
+        case '*':
             return product = operators.multiply(num1, num2);
-        case '÷':
+        case '/':
             if (num2 === 0) {
                 return 'You made Bobert go crazy.'
             };
@@ -111,6 +111,21 @@ function getValue(event) {
     displayNum(event.target.value);
 };
 
+function registerButton(e) {
+    const number = document.querySelector(`button[data-number="${e.key}"]`);
+    const operator = document.querySelector(`button[data-operator="${e.key}"]`);
+
+    if (number) {
+        displayNum(number.dataset.number);
+    } else if (operator) {
+        runOperation();
+        if (e.key === '=') return;
+        setAndReset(operator.dataset.operator);
+    } 
+
+    return;
+};
+
 function setupEventListeners() {
 
     clear.addEventListener('click', clearChar);
@@ -127,6 +142,10 @@ function setupEventListeners() {
     num9.addEventListener('click', getValue);
     num0.addEventListener('click', getValue);
     decimal.addEventListener('click', getValue);
+
+    window.addEventListener('keydown', (e) => {
+        registerButton(e);
+    })
 
     plus.addEventListener('click', (e) => {
         runOperation();
