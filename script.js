@@ -79,7 +79,7 @@ function displayNum(num) {
         displayItem += num;
         
         if (displayItem.includes('.')) {
-            decimal.removeEventListener('click', getValue)
+            decimal.removeEventListener('click', registerInput)
         };
 
         display.textContent = displayItem;
@@ -96,7 +96,7 @@ function runOperation() {
         secondNum = '';
         firstNum = '';
         displayNum(result);
-        decimal.addEventListener('click', getValue);
+        decimal.addEventListener('click', registerInput);
     };
 };
 
@@ -107,17 +107,14 @@ function setAndReset(item) {
     secondNum = '';
 }
 
-function getValue(event) {
-    displayNum(event.target.value);
-};
-
-function registerKey(e) {
+function registerInput(e) {
+    const numBtn = e.target.dataset.number;
     const numKey = document.querySelector(`button[data-number="${e.key}"]`);
     const opKey = document.querySelector(`button[data-operator="${e.key}"]`);
 
-    if (number) {
-        displayNum(numKey.dataset.number);
-    } else if (operator) {
+    if (numBtn || numKey) {
+        displayNum(numBtn || numKey.dataset.number);
+    } else if (opKey) {
         runOperation();
         if (e.key === '=') return;
         setAndReset(opKey.dataset.operator);
@@ -131,41 +128,41 @@ function setupEventListeners() {
     clear.addEventListener('click', clearChar);
     clearAll.addEventListener('click', resetAll);
 
-    num1.addEventListener('click', getValue);
-    num2.addEventListener('click', getValue);
-    num3.addEventListener('click', getValue);
-    num4.addEventListener('click', getValue);
-    num5.addEventListener('click', getValue);
-    num6.addEventListener('click', getValue);
-    num7.addEventListener('click', getValue);
-    num8.addEventListener('click', getValue);
-    num9.addEventListener('click', getValue);
-    num0.addEventListener('click', getValue);
-    decimal.addEventListener('click', getValue);
-
-    window.addEventListener('keydown', (e) => {
-        registerKey(e);
-    })
+    num1.addEventListener('click', registerInput);
+    num2.addEventListener('click', registerInput);
+    num3.addEventListener('click', registerInput);
+    num4.addEventListener('click', registerInput);
+    num5.addEventListener('click', registerInput);
+    num6.addEventListener('click', registerInput);
+    num7.addEventListener('click', registerInput);
+    num8.addEventListener('click', registerInput);
+    num9.addEventListener('click', registerInput);
+    num0.addEventListener('click', registerInput);
+    decimal.addEventListener('click', registerInput);
 
     plus.addEventListener('click', (e) => {
         runOperation();
-        setAndReset(e.target.value);
+        setAndReset(e.target.dataset.operator);
     });
     minus.addEventListener('click', (e) => {
         runOperation();
-        setAndReset(e.target.value);
+        setAndReset(e.target.dataset.operator);
     });
     multiply.addEventListener('click', (e) => {
         runOperation();
-        setAndReset(e.target.value);
+        setAndReset(e.target.dataset.operator);
     });
     divide.addEventListener('click', (e) => {
         runOperation();
-        setAndReset(e.target.value);
+        setAndReset(e.target.dataset.operator);
     });
     equal.addEventListener('click', () => {
         runOperation()
     });
+
+    window.addEventListener('keydown', (e) => {
+        registerInput(e);
+    })
 };
 
 setupEventListeners();
