@@ -111,16 +111,16 @@ function getValue(event) {
     displayNum(event.target.value);
 };
 
-function registerButton(e) {
-    const number = document.querySelector(`button[data-number="${e.key}"]`);
-    const operator = document.querySelector(`button[data-operator="${e.key}"]`);
+function registerKey(e) {
+    const numKey = document.querySelector(`button[data-number="${e.key}"]`);
+    const opKey = document.querySelector(`button[data-operator="${e.key}"]`);
 
     if (number) {
-        displayNum(number.dataset.number);
+        displayNum(numKey.dataset.number);
     } else if (operator) {
         runOperation();
         if (e.key === '=') return;
-        setAndReset(operator.dataset.operator);
+        setAndReset(opKey.dataset.operator);
     } 
 
     return;
@@ -144,7 +144,7 @@ function setupEventListeners() {
     decimal.addEventListener('click', getValue);
 
     window.addEventListener('keydown', (e) => {
-        registerButton(e);
+        registerKey(e);
     })
 
     plus.addEventListener('click', (e) => {
