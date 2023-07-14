@@ -75,15 +75,10 @@ function operate(num1, op, num2) {
 };
 
 function displayNum(num) {
-    if (displayItem.length < 13) {
-        displayItem += num;
-        
-        if (displayItem.includes('.')) {
-            decimal.removeEventListener('click', registerInput)
-        };
-
-        display.textContent = displayItem;
-    };
+    if (display.textContent.length > 11) return;
+    if (display.textContent.includes('.')) decimal.removeEventListener('click', registerInput);
+    displayItem += num;
+    display.textContent = displayItem;
 };
 
 function runOperation() {
