@@ -114,8 +114,6 @@ function registerInput(e) {
         if (e.key === '=') return;
         setAndReset(opKey.dataset.operator);
     } 
-
-    return;
 };
 
 function setupEventListeners() {
