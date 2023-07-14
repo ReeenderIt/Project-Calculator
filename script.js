@@ -7,7 +7,7 @@ let displayItem = '';
 const display = document.getElementById('display');
 
 const clear = document.getElementById('clear')
-const clearAll = document.getElementById('clear-all')
+const clearEntry = document.getElementById('clear-entry')
 
 const num1 = document.getElementById('num1');
 const num2 = document.getElementById('num2');
@@ -119,7 +119,7 @@ function registerInput(e) {
 function setupEventListeners() {
 
     clear.addEventListener('click', clearChar);
-    clearAll.addEventListener('click', resetAll);
+    clearEntry.addEventListener('click', resetAll);
 
     num1.addEventListener('click', registerInput);
     num2.addEventListener('click', registerInput);

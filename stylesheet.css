@@ -95,7 +95,7 @@ main {
     grid-column: 1 / 2;
 }
 
-.clear-all {
+.clear-entry {
     grid-column: 2 / 4;
     width: 100%;
 }
