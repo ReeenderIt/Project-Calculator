@@ -118,8 +118,8 @@ function registerInput(e) {
 
 function setupEventListeners() {
 
-    clear.addEventListener('click', clearChar);
-    clearEntry.addEventListener('click', resetAll);
+    clear.addEventListener('click', resetAll);
+    clearEntry.addEventListener('click', clearChar);
 
     num1.addEventListener('click', registerInput);
     num2.addEventListener('click', registerInput);
