@@ -76,7 +76,7 @@ function operate(num1, op, num2) {
 
 function displayNum(num) {
     if (display.textContent.length > 11) return;
-    if (display.textContent.includes('.')) decimal.removeEventListener('click', registerInput);
+    if (display.textContent.includes('.')) decimal.removeEventListener('click', getNum);
     displayItem += num;
     display.textContent = displayItem;
 };
@@ -91,7 +91,7 @@ function runOperation() {
         secondNum = '';
         firstNum = '';
         displayNum(result);
-        decimal.addEventListener('click', registerInput);
+        decimal.addEventListener('click', getNum);
     };
 };
 
@@ -100,16 +100,18 @@ function setAndReset(item) {
     operator = item;
     displayItem = '';
     secondNum = '';
-}
+};
 
-function registerInput(e) {
-    const numBtn = e.target.dataset.number;
+function getNum(e) {
+    displayNum(e.target.dataset.number)
+};
+
+function registerKeydown(e) {
     const numKey = document.querySelector(`button[data-number="${e.key}"]`);
     const opKey = document.querySelector(`button[data-operator="${e.key}"]`);
 
-    if (numBtn || numKey) {
-        displayNum(numBtn || numKey.dataset.number);
-    } else if (opKey) {
+    if (numKey) displayNum(numKey.dataset.number);
+    if (opKey) {
         runOperation();
         if (e.key === '=') return;
         setAndReset(opKey.dataset.operator);
@@ -121,17 +123,17 @@ function setupEventListeners() {
     clear.addEventListener('click', resetAll);
     clearEntry.addEventListener('click', clearChar);
 
-    num1.addEventListener('click', registerInput);
-    num2.addEventListener('click', registerInput);
-    num3.addEventListener('click', registerInput);
-    num4.addEventListener('click', registerInput);
-    num5.addEventListener('click', registerInput);
-    num6.addEventListener('click', registerInput);
-    num7.addEventListener('click', registerInput);
-    num8.addEventListener('click', registerInput);
-    num9.addEventListener('click', registerInput);
-    num0.addEventListener('click', registerInput);
-    decimal.addEventListener('click', registerInput);
+    num1.addEventListener('click', getNum);
+    num2.addEventListener('click', getNum);
+    num3.addEventListener('click', getNum);
+    num4.addEventListener('click', getNum);
+    num5.addEventListener('click', getNum);
+    num6.addEventListener('click', getNum);
+    num7.addEventListener('click', getNum);
+    num8.addEventListener('click', getNum);
+    num9.addEventListener('click', getNum);
+    num0.addEventListener('click', getNum);
+    decimal.addEventListener('click', getNum);
 
     plus.addEventListener('click', (e) => {
         runOperation();
@@ -153,9 +155,7 @@ function setupEventListeners() {
         runOperation()
     });
 
-    window.addEventListener('keydown', (e) => {
-        registerInput(e);
-    })
+    document.addEventListener('keydown', registerKeydown);
 };
 
 setupEventListeners();
