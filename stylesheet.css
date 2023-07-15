@@ -154,7 +154,7 @@ main {
     background-color: #f5f5f5;
 }
 
-.operators button[value]:focus {
+.operators button:nth-child(-n+4):focus {
     color: #f5f5f5;
     background-color: #000000;
 }
