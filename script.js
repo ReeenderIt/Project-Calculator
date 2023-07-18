@@ -35,10 +35,7 @@ function clearChar() {
     displayItem = '';
     displayNum(newInput);
 
-    if (newInput.length === 0) {
-        display.textContent = '0';
-        return;
-    }
+    if (newInput.length === 0) display.textContent = '0';
 };
 
 function resetAll() {
