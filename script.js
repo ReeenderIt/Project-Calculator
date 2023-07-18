@@ -109,8 +109,10 @@ function getNum(e) {
 function registerKeydown(e) {
     const numKey = document.querySelector(`button[data-number="${e.key}"]`);
     const opKey = document.querySelector(`button[data-operator="${e.key}"]`);
+    const clearKey = document.querySelector(`button[data-key="${e.key}"]`);
 
     if (numKey) displayNum(numKey.dataset.number);
+    if (clearKey) clearChar();
     if (opKey) {
         runOperation();
         if (e.key === '=') return;
