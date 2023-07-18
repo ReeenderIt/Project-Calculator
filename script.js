@@ -38,7 +38,7 @@ function clearChar() {
     if (newInput.length === 0) display.textContent = '0';
 };
 
-function resetAll() {
+function clearAll() {
     display.textContent = '0';
     firstNum = '';
     operator = '';
