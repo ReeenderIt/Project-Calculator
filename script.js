@@ -119,7 +119,7 @@ function registerKeydown(e) {
 
 function setupEventListeners() {
 
-    clear.addEventListener('click', resetAll);
+    clear.addEventListener('click', clearAll);
     clearEntry.addEventListener('click', clearChar);
 
     num1.addEventListener('click', getNum);
