@@ -103,13 +103,13 @@ function getNum(e) {
     displayNum(e.target.dataset.number)
 };
 
-function getNumKey() {
+function getNumKey(e) {
     const numKey = document.querySelector(`button[data-number="${e.key}"]`);
     if(!numKey) return;
     displayNum(e.key);
 };
 
-function getOpKey() {
+function getOpKey(e) {
     const opKey = document.querySelector(`button[data-operator="${e.key}"]`);
     if(!opKey) return;
     runOperation();
