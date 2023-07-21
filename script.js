@@ -103,18 +103,28 @@ function getNum(e) {
     displayNum(e.target.dataset.number)
 };
 
-function registerKeydown(e) {
+function getNumKey() {
     const numKey = document.querySelector(`button[data-number="${e.key}"]`);
-    const opKey = document.querySelector(`button[data-operator="${e.key}"]`);
-    const clearKey = document.querySelector(`button[data-key="${e.key}"]`);
+    if(!numKey) return;
+    displayNum(e.key);
+};
 
-    if (numKey) displayNum(numKey.dataset.number);
-    if (clearKey) clearChar();
-    if (opKey) {
-        runOperation();
-        if (e.key === '=') return;
-        setAndReset(opKey.dataset.operator);
-    } 
+function getOpKey() {
+    const opKey = document.querySelector(`button[data-operator="${e.key}"]`);
+    if(!opKey) return;
+    runOperation();
+    if (e.key === '=') return;
+    setAndReset(opKey.dataset.operator);
+};
+
+function runActKey(e) {
+    const actKey = document.querySelector(`button[data-action="${e.key}"]`);
+    if(!actKey) return;
+    switch(e.key) {
+        case 'Backspace':
+            clearChar();
+            break;
+    };
 };
 
 function setupEventListeners() {
@@ -154,7 +164,11 @@ function setupEventListeners() {
         runOperation()
     });
 
-    document.addEventListener('keydown', registerKeydown);
+    document.addEventListener('keydown', (e) => {
+        getNumKey(e);
+        getOpKey(e);
+        runActKey(e);
+    });
 };
 
 setupEventListeners();
