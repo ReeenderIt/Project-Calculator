@@ -124,6 +124,8 @@ function runActKey(e) {
         case 'Backspace':
             clearChar();
             break;
+        case 'Enter':
+            runOperation();
     };
 };
 
