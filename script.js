@@ -83,7 +83,14 @@ function runOperation() {
     if ((num1 !== '' || num1 == '0') 
         && operator !== ''
         && (secondNum !== '' || secondNum == '0')) {
-        const result = operate(firstNum, operator, secondNum);
+        let result = operate(firstNum, operator, secondNum);
+         
+        if (result.toString().length > 11) {
+            const resultArr = result.toString().split('');
+            resultArr.splice(1, 0, `.`);
+            result = resultArr.splice(0, 11).join('');
+        };
+        
         displayItem = '';
         secondNum = '';
         firstNum = '';
