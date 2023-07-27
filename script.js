@@ -46,29 +46,19 @@ function clearAll() {
     secondNum = '';
 };
 
-const operators = {
-    add: (a, b) => a + b,
-    subtract: (a, b) => a - b,
-    multiply: (a, b) => a * b,
-    divide: (a, b) => a / b,
-};
-
-function operate(num1, op, num2) {
-    num1 = +num1;
-    num2 = +num2;
-    switch(op) {
-        case '+':
-            return sum = operators.add(num1, num2);
-        case '-':
-            return difference = operators.subtract(num1, num2);
-        case '*':
-            return product = operators.multiply(num1, num2);
-        case '/':
-            if (num2 === 0) {
-                return 'You made Bobert go crazy.'
-            };
-            return quotient = operators.divide(num1, num2);
-    }
+const operation = {
+    '+': function (num1, num2) {return +(num1) + +(num2)},
+    '-': function (num1, num2) {return +(num1) - +(num2)},
+    '*': function (num1, num2) {
+        if(num1.includes('.')) return 'NaN';
+        return +(num1) * +(num2)
+    },
+    '/': function (num1, num2) {
+        if (num2 === 0) {
+            return 'You made Bobert go crazy.'
+        };
+        return +(num1) / +(num2);
+    },
 };
 
 function displayNum(num) {
@@ -83,7 +73,7 @@ function runOperation() {
     if ((num1 !== '' || num1 == '0') 
         && operator !== ''
         && (secondNum !== '' || secondNum == '0')) {
-        let result = operate(firstNum, operator, secondNum);
+        let result = operation[operator](firstNum, secondNum);
          
         if (result.toString().length > 11) {
             const resultArr = result.toString().split('');
