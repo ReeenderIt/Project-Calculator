@@ -78,7 +78,6 @@ function runOperation() {
          
         if (result.toString().length > 11) {
             const resultArr = result.toString().split('');
-            resultArr.splice(1, 0, `.`);
             result = resultArr.splice(0, 11).join('');
         };
         
