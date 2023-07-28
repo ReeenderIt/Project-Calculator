@@ -62,9 +62,12 @@ const operation = {
 };
 
 function displayNum(num) {
-    if (display.textContent.length > 11) return;
-    if (display.textContent.includes('.')) decimal.removeEventListener('click', getNum);
     displayItem += num;
+    if (display.textContent.length >= 12) {
+        const displayArr = displayItem.toString().split('');
+        displayItem = displayArr.splice(0, 12).join('');
+    };
+    if (display.textContent.includes('.')) decimal.removeEventListener('click', getNum);
     display.textContent = displayItem;
 };
 
