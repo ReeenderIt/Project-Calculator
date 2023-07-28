@@ -70,9 +70,7 @@ function displayNum(num) {
 
 function runOperation() {
     secondNum = display.textContent;
-    if ((num1 !== '' || num1 == '0') 
-        && operator !== ''
-        && (secondNum !== '' || secondNum == '0')) {
+    if (operator !== '') {
         let result = operation[operator](firstNum, secondNum);
          
         if (result.toString().length > 11) {
@@ -82,8 +80,7 @@ function runOperation() {
         };
         
         displayItem = '';
-        secondNum = '';
-        firstNum = '';
+        operator = '';
         displayNum(result);
         decimal.addEventListener('click', getNum);
     };
