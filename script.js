@@ -58,7 +58,7 @@ const operation = {
 
 function displayInput(num) {
     displayItem += num;
-    if (display.textContent.length >= 12) {
+    if (displayItem.toString().length >= 12) {
         const displayArr = displayItem.toString().split('');
         displayItem = displayArr.splice(0, 12).join('');
     };
@@ -70,11 +70,6 @@ function runOperation() {
     if (operator !== '') {
         let result = operation[operator](firstNum, secondNum);
          
-        if (result.toString().length > 11) {
-            const resultArr = result.toString().split('');
-            result = resultArr.splice(0, 11).join('');
-        };
-        
         displayItem = '';
         operator = '';
         displayInput(result);
