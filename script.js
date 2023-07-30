@@ -33,7 +33,7 @@ function clearChar() {
     displayArr.splice(-1,1);
     const newInput = displayArr.join('');
     displayItem = '';
-    displayNum(newInput);
+    displayInput(newInput);
 
     if (newInput.length === 0) display.textContent = '0';
 };
@@ -56,7 +56,7 @@ const operation = {
     },
 };
 
-function displayNum(num) {
+function displayInput(num) {
     displayItem += num;
     if (display.textContent.length >= 12) {
         const displayArr = displayItem.toString().split('');
@@ -77,7 +77,7 @@ function runOperation() {
         
         displayItem = '';
         operator = '';
-        displayNum(result);
+        displayInput(result);
     };
 };
 
@@ -93,10 +93,10 @@ function getNum(e) {
     const numKey = document.querySelector(`button[data-number="${e.key}"]`);
     if(numKey) {
         if(display.textContent.includes('.') && numKey.dataset.number == '.') return;
-        displayNum(numKey.dataset.number);
+        displayInput(numKey.dataset.number);
     } else if (numBtn) {
         if(display.textContent.includes('.') && numBtn == '.') return;
-        displayNum(numBtn);
+        displayInput(numBtn);
     };
 };
 
