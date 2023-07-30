@@ -62,7 +62,6 @@ function displayNum(num) {
         const displayArr = displayItem.toString().split('');
         displayItem = displayArr.splice(0, 12).join('');
     };
-    if (display.textContent.includes('.')) decimal.removeEventListener('click', getNum);
     display.textContent = displayItem;
 };
 
@@ -79,7 +78,6 @@ function runOperation() {
         displayItem = '';
         operator = '';
         displayNum(result);
-        decimal.addEventListener('click', getNum);
     };
 };
 
@@ -94,8 +92,10 @@ function getNum(e) {
     const numBtn = e.target.dataset.number;
     const numKey = document.querySelector(`button[data-number="${e.key}"]`);
     if(numKey) {
+        if(display.textContent.includes('.') && numKey.dataset.number == '.') return;
         displayNum(numKey.dataset.number);
     } else if (numBtn) {
+        if(display.textContent.includes('.') && numBtn == '.') return;
         displayNum(numBtn);
     };
 };
