@@ -91,13 +91,13 @@ function setAndReset(item) {
 };
 
 function getNum(e) {
-    displayNum(e.target.dataset.number)
-};
-
-function getNumKey(e) {
+    const numBtn = e.target.dataset.number;
     const numKey = document.querySelector(`button[data-number="${e.key}"]`);
-    if(!numKey) return;
-    displayNum(e.key);
+    if(numKey) {
+        displayNum(numKey.dataset.number);
+    } else if (numBtn) {
+        displayNum(numBtn);
+    };
 };
 
 function getOpKey(e) {
@@ -158,7 +158,7 @@ function setupEventListeners() {
     });
 
     document.addEventListener('keydown', (e) => {
-        getNumKey(e);
+        getNum(e);
         getOpKey(e);
         runActKey(e);
     });
