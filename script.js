@@ -54,9 +54,7 @@ const operation = {
         return +(num1) * +(num2)
     },
     '/': function (num1, num2) {
-        if (num2 === 0) {
-            return 'You made Bobert go crazy.'
-        };
+        if (num2 == 0) return 'You Crazy';
         return +(num1) / +(num2);
     },
 };
