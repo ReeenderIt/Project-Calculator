@@ -84,7 +84,7 @@ function setAndReset(item) {
 };
 
 function getNum(e) {
-    if(display.textContent.includes('.') && (e.key || e.target.value) === '.') return;
+    if(display.textContent.includes('.') && e.target.value === '.') return;
     displayInput(e.target.value);
 };
 
