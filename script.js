@@ -84,14 +84,14 @@ function setAndReset(item) {
 };
 
 function getNum(e) {
-    const numBtn = e.target.dataset.number;
-    const numKey = document.querySelector(`button[data-number="${e.key}"]`);
-    if(numKey) {
-        if(display.textContent.includes('.') && numKey.dataset.number == '.') return;
-        displayInput(numKey.dataset.number);
-    } else if (numBtn) {
-        if(display.textContent.includes('.') && numBtn == '.') return;
-        displayInput(numBtn);
+    if(display.textContent.includes('.') && (e.key || e.target.value) === '.') return;
+    displayInput(e.target.value);
+};
+
+function getNumKey(e) {
+    if(display.textContent.includes('.') && e.key === '.') return;
+    if(Number.isInteger(Number(e.key)) || e.key === '.') {
+        displayInput(e.key);
     };
 };
 
@@ -153,7 +153,7 @@ function setupEventListeners() {
     });
 
     document.addEventListener('keydown', (e) => {
-        getNum(e);
+        getNumKey(e);
         getOpKey(e);
         runActKey(e);
     });
