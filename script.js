@@ -111,6 +111,7 @@ function runActKey(e) {
             clearChar();
             break;
         case 'Enter':
+            e.preventDefault();
             runOperation();
     };
 };
